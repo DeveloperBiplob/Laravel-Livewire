@@ -21,7 +21,8 @@
 
     <body>
 
-        @livewire('counter')
+        <livewire:comments/>
+        {{-- @livewire('counter') --}}
         @livewireScripts
 
         <script
