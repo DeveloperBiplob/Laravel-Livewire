@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $comments = Comment::latest()->get();
+    return view('welcome', compact('comments'));
 });

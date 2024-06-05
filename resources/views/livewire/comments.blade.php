@@ -15,10 +15,10 @@
                     @foreach ($comments as $comment)
                     <div class="card p-3 mb-3">
                         <div class="d-flex align-items-conter justify-content-between mb-2">
-                            <h6>{{ $comment['creator'] }}</h6>
-                            <span class="text-secondary"> {{ $comment['created_at'] }}</span>
+                            <h6>{{ $comment->creator->name }}</h6>
+                            <span class="text-secondary"> {{ $comment->created_at->diffForHumans() }}</span>
                         </div>
-                        <p>{{ $comment['body'] }}</p>
+                        <p>{{ $comment->body }}</p>
                     </div>
                     @endforeach
                 </div>

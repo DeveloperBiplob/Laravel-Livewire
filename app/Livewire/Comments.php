@@ -7,15 +7,15 @@ use Livewire\Component;
 
 class Comments extends Component
 {
-    public $comments = [
-        [
-            'body' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam minus dicta a optio non fuga? Facilis molestiae dolores consequatur harum.',
-            'created_at' => '9 minutes ago',
-            'creator' => 'Biplob Jabery',
-        ],
-    ];
+    public $comments;
 
-    public $newComment = '';
+    public $newComment;
+
+    // When a componets load that time mount function start work
+    public function mount($initialComments)
+    {
+        $this->comments = $initialComments;
+    }
 
     public function addComment()
     {
