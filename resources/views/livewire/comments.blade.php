@@ -4,10 +4,12 @@
             <div class="col-6 mt-5">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <input type="text" name="comments" placeholder="Enter Your Comments.." id="" class="form-control" wire:model="newComment">
-                        <button class="btn btn-outline-success" wire:click="addComment">Add</button>
-                    </div>
+                    <form wire:submit="addComment">
+                        <div class="d-flex align-items-center">
+                                <input type="text" name="comments" placeholder="Enter Your Comments.." id="" class="form-control" wire:model.blur="newComment">
+                                <button type="submit" class="btn btn-outline-success">Add</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="card-body">
                     @foreach ($comments as $comment)

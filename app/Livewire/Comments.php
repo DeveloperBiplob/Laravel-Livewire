@@ -28,6 +28,11 @@ class Comments extends Component
         //     'creator' => 'Biplob',
         // ];
 
+        if($this->newComment === '')
+        {
+            return;
+        }
+
         array_unshift($this->comments, [
 
             'body' => $this->newComment,
