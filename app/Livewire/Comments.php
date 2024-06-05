@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Comment;
 use Carbon\Carbon;
 use Livewire\Component;
 
@@ -12,8 +13,17 @@ class Comments extends Component
     public $newComment;
 
     // When a componets load that time mount function start work
-    public function mount($initialComments)
+
+    #passing data form view file usign {Propse}
+    // public function mount($initialComments)
+    // {
+    //     $this->comments = $initialComments;
+    // }
+    
+    #Get data form database on mount function
+    public function mount()
     {
+        $initialComments = Comment::latest()->get();
         $this->comments = $initialComments;
     }
 

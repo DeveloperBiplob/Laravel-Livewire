@@ -21,7 +21,8 @@
 
     <body>
 
-        <livewire:comments :initialComments="$comments"/>
+        {{-- <livewire:comments :initialComments="$comments"/> --}}
+        <livewire:comments />
         {{-- @livewire('counter') --}}
         @livewireScripts
 
