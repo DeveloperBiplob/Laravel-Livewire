@@ -81,6 +81,9 @@ class Comments extends Component
         $this->comments->prepend($createdComment); // adding first
 
         $this->newComment = '';
+
+        // Show message when data save in database
+        session()->flash('message', 'Message added successfully!');
     }
 
     public function remove($commentId)
@@ -92,6 +95,9 @@ class Comments extends Component
         // remove for collection
         // $this->comments = $this->comments->where('id', '!==', $comment);
         $this->comments = $this->comments->except($commentId);
+
+        // Show message when data delete in database
+        session()->flash('message', 'Message deleted successfully!');
     }
     
     public function render()

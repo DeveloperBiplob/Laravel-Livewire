@@ -4,6 +4,11 @@
             <div class="col-6 mt-5">
             <div class="card">
                 <div class="card-header">
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <form wire:submit="addComment">
                         <div class="d-flex align-items-center">
                                 <input type="text" name="comments" placeholder="Enter Your Comments.." id="" class="form-control" wire:model.blur="newComment">
