@@ -27,6 +27,14 @@ class Comments extends Component
         $this->comments = $initialComments;
     }
 
+    ## Realtime validation
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'newComment' => 'required|string|max:10'
+        ]);
+    }
+
     public function addComment()
     {
       
