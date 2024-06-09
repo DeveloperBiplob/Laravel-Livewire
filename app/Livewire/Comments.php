@@ -38,17 +38,34 @@ class Comments extends Component
         //     'creator' => 'Biplob',
         // ];
 
+        // if($this->newComment === '')
+        // {
+        //     return;
+        // }
+
+        // array_unshift($this->comments, [
+
+        //     'body' => $this->newComment,
+        //     'created_at' => Carbon::now()->diffForHumans(),
+        //     'creator' => 'Biplob',
+        // ]);
+
+        
+
+        ## Store data in database-------
+
         if($this->newComment === '')
         {
             return;
         }
 
-        array_unshift($this->comments, [
-
+        $createdComment = Comment::create([
             'body' => $this->newComment,
-            'created_at' => Carbon::now()->diffForHumans(),
-            'creator' => 'Biplob',
+            'user_id' => 1,
         ]);
+
+        // $this->comments->push($createdComment); // adding last
+        $this->comments->prepend($createdComment); // adding first
 
         $this->newComment = '';
     }
