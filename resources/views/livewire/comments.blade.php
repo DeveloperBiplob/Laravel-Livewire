@@ -10,6 +10,7 @@
                                 <button type="submit" class="btn btn-outline-success">Add</button>
                         </div>
                     </form>
+                    <div class="text-danger mt-2">@error('newComment') {{ $message }} @enderror</div>
                 </div>
                 <div class="card-body">
                     @foreach ($comments as $comment)

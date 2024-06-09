@@ -50,14 +50,19 @@ class Comments extends Component
         //     'creator' => 'Biplob',
         // ]);
 
-        
+
 
         ## Store data in database-------
 
-        if($this->newComment === '')
-        {
-            return;
-        }
+        // if($this->newComment === '')
+        // {
+        //     return;
+        // }
+
+        ## realtime validatin using livewire
+        $this->validate([
+            'newComment' => 'required|string|max:100'
+        ]);
 
         $createdComment = Comment::create([
             'body' => $this->newComment,
