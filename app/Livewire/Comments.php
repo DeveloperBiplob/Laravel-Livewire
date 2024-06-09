@@ -31,7 +31,7 @@ class Comments extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-            'newComment' => 'required|string|max:10'
+            'newComment' => 'required|string|max:100'
         ]);
     }
 
@@ -81,6 +81,17 @@ class Comments extends Component
         $this->comments->prepend($createdComment); // adding first
 
         $this->newComment = '';
+    }
+
+    public function remove($commentId)
+    {
+        // Delete Form Database
+        $comment = Comment::find($commentId);
+        $comment->delete();
+
+        // remove for collection
+        // $this->comments = $this->comments->where('id', '!==', $comment);
+        $this->comments = $this->comments->except($commentId);
     }
     
     public function render()

@@ -16,8 +16,13 @@
                     @foreach ($comments as $comment)
                     <div class="card p-3 mb-3">
                         <div class="d-flex align-items-conter justify-content-between mb-2">
-                            <h6>{{ $comment->creator->name }}</h6>
-                            <span class="text-secondary"> {{ $comment->created_at->diffForHumans() }}</span>
+                            <div class="d-flex gap-2">
+                                <h6>{{ $comment->creator->name }}</h6> -
+                                <span class="text-secondary"> {{ $comment->created_at->diffForHumans() }}</span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-xmark" style="cursor: pointer" wire:click="remove({{ $comment->id }})"></i>
+                            </div>
                         </div>
                         <p>{{ $comment->body }}</p>
                     </div>
