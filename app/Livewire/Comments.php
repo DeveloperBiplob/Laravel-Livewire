@@ -2,13 +2,15 @@
 
 namespace App\Livewire;
 
+use Livewire\WithPagination;
 use App\Models\Comment;
 use Carbon\Carbon;
 use Livewire\Component;
 
 class Comments extends Component
 {
-    public $comments;
+    use WithPagination;
+    // public $comments;
 
     public $newComment;
 
@@ -23,8 +25,8 @@ class Comments extends Component
     #Get data form database on mount function
     public function mount()
     {
-        $initialComments = Comment::latest()->get();
-        $this->comments = $initialComments;
+        // $initialComments = Comment::latest()->paginate(2);
+        // $this->comments = $initialComments;
     }
 
     ## Realtime validation
@@ -78,7 +80,7 @@ class Comments extends Component
         ]);
 
         // $this->comments->push($createdComment); // adding last
-        $this->comments->prepend($createdComment); // adding first
+        // $this->comments->prepend($createdComment); // adding first
 
         $this->newComment = '';
 
@@ -94,7 +96,7 @@ class Comments extends Component
 
         // remove for collection
         // $this->comments = $this->comments->where('id', '!==', $comment);
-        $this->comments = $this->comments->except($commentId);
+        // $this->comments = $this->comments->except($commentId);
 
         // Show message when data delete in database
         session()->flash('message', 'Message deleted successfully!');
@@ -102,6 +104,8 @@ class Comments extends Component
     
     public function render()
     {
-        return view('livewire.comments');
+        return view('livewire.comments', [
+            'comments' => Comment::latest()->paginate(2)
+        ]);
     }
 }
