@@ -105,7 +105,7 @@ class Comments extends Component
     public function render()
     {
         return view('livewire.comments', [
-            'comments' => Comment::latest()->paginate(2)
+            'comments' => Comment::latest()->paginate(4)
         ]);
     }
 }

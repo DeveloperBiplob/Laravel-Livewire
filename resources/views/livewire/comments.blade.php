@@ -32,7 +32,7 @@
                         <p>{{ $comment->body }}</p>
                     </div>
                     @endforeach
-                    {{ $comments->links() }}
+                    {{ $comments->links('pagination-limks') }}
                 </div>
             </div>
             </div>
